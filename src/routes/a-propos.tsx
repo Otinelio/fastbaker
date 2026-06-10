@@ -18,7 +18,7 @@ function AboutPage() {
   return (
     <PageTransition>
       <section className="pt-[72px] relative h-screen">
-        <img src="https://source.unsplash.com/featured/1600x900/?baker,hands,dough,warm" alt="Artisan boulanger" className="absolute inset-0 w-full h-full object-cover" />
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1600&h=900&fit=crop" alt="Artisan boulanger" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/60" />
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-6xl md:text-8xl font-[var(--font-heading)] italic text-white text-center px-6">Notre Histoire</motion.h1>
@@ -29,7 +29,7 @@ function AboutPage() {
         <Wheat size={400} className="absolute -right-20 -top-20 text-[var(--color-gold)]/10" />
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative">
           <div className="rounded-3xl overflow-hidden h-[500px]">
-            <img src="https://source.unsplash.com/featured/800x900/?pastry,chef,kitchen,warm" alt="Chef pâtissier" className="w-full h-full object-cover" />
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&h=900&fit=crop" alt="Chef pâtissier" className="w-full h-full object-cover" />
           </div>
           <div>
             <div className="brand-script text-5xl mb-6">Fast Baker</div>

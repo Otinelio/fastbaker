@@ -20,11 +20,11 @@ export const Route = createFileRoute("/")({
 });
 
 const CATS = [
-  { slug: "fast-food", label: "Fast Food", Icon: Beef, color: "var(--color-terracotta)" },
-  { slug: "patisseries", label: "Pâtisseries", Icon: Croissant, color: "var(--color-caramel)" },
-  { slug: "plats", label: "Plats", Icon: UtensilsCrossed, color: "var(--color-sage)" },
-  { slug: "desserts", label: "Desserts", Icon: Cake, color: "var(--color-rose)" },
-  { slug: "boissons", label: "Boissons", Icon: CupSoda, color: "var(--color-gold)" },
+  { slug: "fast-food", label: "Fast Food", Icon: Beef, color: "var(--color-terracotta)", image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop" },
+  { slug: "patisseries", label: "Pâtisseries", Icon: Croissant, color: "var(--color-caramel)", image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=300&fit=crop" },
+  { slug: "plats", label: "Plats", Icon: UtensilsCrossed, color: "var(--color-sage)", image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?w=400&h=300&fit=crop" },
+  { slug: "desserts", label: "Desserts", Icon: Cake, color: "var(--color-rose)", image: "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=400&h=300&fit=crop" },
+  { slug: "boissons", label: "Boissons", Icon: CupSoda, color: "var(--color-gold)", image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=400&h=300&fit=crop" },
 ];
 
 const TESTI = [
@@ -74,7 +74,7 @@ function HomePage() {
 
           <div className="relative h-[420px] md:h-[560px]">
             <motion.div className="absolute inset-0 animate-floaty rounded-3xl overflow-hidden shadow-[var(--shadow-card)]">
-              <img src="https://source.unsplash.com/featured/800x1100/?gourmet,burger,dark,golden" alt="Burger gourmand" className="w-full h-full object-cover" />
+              <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=800&h=1100&fit=crop" alt="Burger gourmand" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-[var(--color-gold)]/10" />
             </motion.div>
           </div>
@@ -92,7 +92,7 @@ function HomePage() {
                 <Link to="/menu" search={{ cat: c.slug }} className="group block min-w-[180px] md:min-w-0">
                   <div className="relative rounded-2xl overflow-hidden bg-[var(--color-bg)] h-[240px] border border-transparent hover:border-[var(--color-gold)] transition-all hover:-translate-y-1 shadow-[var(--shadow-card)]">
                     <div className="h-[60%] overflow-hidden">
-                      <img src={`https://source.unsplash.com/featured/400x300/?${c.slug.replace("-", ",")}`} alt={c.label} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+                      <img src={c.image} alt={c.label} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
                     </div>
                     <div className="h-[40%] p-3 flex items-center gap-2">
                       <c.Icon size={22} style={{ color: c.color }} />
@@ -123,7 +123,7 @@ function HomePage() {
       <section className="bg-[var(--color-cream)] text-[#1A1A1A] py-20 px-6">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-[45%_55%] gap-10 items-center">
           <div className="rounded-3xl overflow-hidden h-[420px]">
-            <img src="https://source.unsplash.com/featured/800x900/?croissants,pastries,overhead" alt="Pâtisseries" className="w-full h-full object-cover" />
+            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800&h=900&fit=crop" alt="Pâtisseries" className="w-full h-full object-cover" />
           </div>
           <div>
             <h2 className="text-4xl md:text-5xl font-[var(--font-heading)] mb-3">Pâtisseries & Douceurs</h2>
@@ -162,9 +162,14 @@ function HomePage() {
             </div>
             <div className="space-y-3">
               <div className="grid grid-cols-2 gap-3">
-                {["wedding,cake", "birthday,cake", "chocolate,cake", "fruit,cake"].map((q) => (
-                  <div key={q} className="aspect-square rounded-xl overflow-hidden">
-                    <img src={`https://source.unsplash.com/featured/200x200/?${q}`} alt="cake" className="w-full h-full object-cover" />
+                {[
+                  "1535141192574-5d4897c12636", // wedding cake
+                  "1578985545062-69928b1d9587", // birthday cake
+                  "1578985545062-69928b1d9587", // chocolate cake
+                  "1535141192574-5d4897c12636"  // fruit cake
+                ].map((id) => (
+                  <div key={id} className="aspect-square rounded-xl overflow-hidden">
+                    <img src={`https://images.unsplash.com/photo-${id}?w=200&h=200&fit=crop`} alt="cake" className="w-full h-full object-cover" />
                   </div>
                 ))}
               </div>

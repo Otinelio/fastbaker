@@ -62,7 +62,7 @@ Envoye depuis fastbaker.com`;
     <PageTransition>
       <section className="pt-[72px] relative">
         <div className="h-[500px] relative overflow-hidden">
-          <img src="https://source.unsplash.com/featured/1600x900/?wedding,cake,luxury,dark" alt="Gâteau de mariage" className="w-full h-full object-cover" />
+          <img src="https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=1600&h=900&fit=crop" alt="Gâteau de mariage" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-[var(--color-bg)]" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
             <Cake size={56} className="text-[var(--color-gold)] mb-4" />

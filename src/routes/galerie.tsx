@@ -9,20 +9,20 @@ export const Route = createFileRoute("/galerie")({
   component: GalleryPage,
 });
 
-interface Pic { id: number; cat: string; q: string; name: string; tall?: boolean }
+interface Pic { id: number; cat: string; img: string; name: string; tall?: boolean }
 const PICS: Pic[] = [
-  { id: 1, cat: "Fast Food", q: "burger,dark,gourmet", name: "Burger Spécial" },
-  { id: 2, cat: "Pâtisseries", q: "croissants,golden", name: "Croissants frais", tall: true },
-  { id: 3, cat: "Plats", q: "grilled,chicken,plate", name: "Poulet braisé" },
-  { id: 4, cat: "Gâteaux Événements", q: "wedding,cake,white", name: "Gâteau de mariage", tall: true },
-  { id: 5, cat: "Fast Food", q: "chicken,wings,spicy", name: "Ailes épicées" },
-  { id: 6, cat: "Pâtisseries", q: "macarons,colorful", name: "Macarons" },
-  { id: 7, cat: "Desserts", q: "chocolate,lava,cake", name: "Fondant" },
-  { id: 8, cat: "Plats", q: "spaghetti,bolognese", name: "Spaghetti" },
-  { id: 9, cat: "Gâteaux Événements", q: "birthday,cake,gold", name: "Anniversaire", tall: true },
-  { id: 10, cat: "Fast Food", q: "loaded,fries,cheese", name: "Frites chargées" },
-  { id: 11, cat: "Pâtisseries", q: "fruit,tart,dessert", name: "Tarte aux fruits" },
-  { id: 12, cat: "Desserts", q: "tiramisu,coffee", name: "Tiramisu" },
+  { id: 1, cat: "Fast Food", img: "1568901346375-23c9450c58cd", name: "Burger Spécial" },
+  { id: 2, cat: "Pâtisseries", img: "1509440159596-0249088772ff", name: "Croissants frais", tall: true },
+  { id: 3, cat: "Plats", img: "1604908176997-125f25cc6f3d", name: "Poulet braisé" },
+  { id: 4, cat: "Gâteaux Événements", img: "1535141192574-5d4897c12636", name: "Gâteau de mariage", tall: true },
+  { id: 5, cat: "Fast Food", img: "1626082927389-6cd097cdc6ec", name: "Ailes épicées" },
+  { id: 6, cat: "Pâtisseries", img: "1606890737304-57a1ca8a5b62", name: "Macarons" },
+  { id: 7, cat: "Desserts", img: "1606890737304-57a1ca8a5b62", name: "Fondant" },
+  { id: 8, cat: "Plats", img: "1512058564366-18510be2db19", name: "Spaghetti" },
+  { id: 9, cat: "Gâteaux Événements", img: "1578985545062-69928b1d9587", name: "Anniversaire", tall: true },
+  { id: 10, cat: "Fast Food", img: "1576107232684-1279f390859f", name: "Frites chargées" },
+  { id: 11, cat: "Pâtisseries", img: "1483695028939-5bb13f8648b0", name: "Tarte aux fruits" },
+  { id: 12, cat: "Desserts", img: "1606890737304-57a1ca8a5b62", name: "Tiramisu" },
 ];
 const CATS = ["Tout", "Fast Food", "Pâtisseries", "Plats", "Gâteaux Événements"];
 
@@ -55,7 +55,7 @@ function GalleryPage() {
           {visible.map((p, i) => (
             <motion.div key={p.id} layoutId={`pic-${p.id}`} onClick={() => setLightbox(i)}
               className="break-inside-avoid relative group cursor-pointer rounded-2xl overflow-hidden">
-              <img src={`https://source.unsplash.com/featured/${p.tall ? "600x900" : "600x500"}/?${p.q}`} alt={p.name} loading="lazy" className="w-full" />
+              <img src={`https://images.unsplash.com/photo-${p.img}?w=${p.tall ? "600&h=900" : "600&h=500"}&fit=crop`} alt={p.name} loading="lazy" className="w-full" />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition flex items-center justify-center">
                 <div className="opacity-0 group-hover:opacity-100 transition text-center p-4 border border-[var(--color-gold)]">
                   <div className="font-[var(--font-heading)] text-xl text-white">{p.name}</div>
@@ -72,7 +72,7 @@ function GalleryPage() {
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[3000] bg-black/95 flex items-center justify-center p-6" onClick={() => setLightbox(null)}>
             <button className="absolute top-6 right-6 text-white" onClick={() => setLightbox(null)}><X size={28} /></button>
             <button className="absolute left-4 text-white" onClick={(e) => { e.stopPropagation(); setLightbox((p) => ((p! - 1 + visible.length) % visible.length)); }}><ChevronLeft size={36} /></button>
-            <motion.img layoutId={`pic-${open.id}`} src={`https://source.unsplash.com/featured/1200x900/?${open.q}`} className="max-h-[80vh] max-w-[90vw] object-contain rounded-xl" />
+            <motion.img layoutId={`pic-${open.id}`} src={`https://images.unsplash.com/photo-${open.img}?w=1200&h=900&fit=crop`} className="max-h-[80vh] max-w-[90vw] object-contain rounded-xl" />
             <button className="absolute right-4 text-white" onClick={(e) => { e.stopPropagation(); setLightbox((p) => ((p! + 1) % visible.length)); }}><ChevronRight size={36} /></button>
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-sm text-[#aaa]">{lightbox! + 1} / {visible.length}</div>
           </motion.div>
